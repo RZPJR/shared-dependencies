@@ -5,6 +5,7 @@
     "@vue-mf/global": "https://global-erpeden.surge.sh/vue-mf-global.js",
     "@vue-mf/navbar": "https://navbar-erpeden.surge.sh/js/app.js",
     "@vue-mf/order": "https://order-erpeden.surge.sh/js/app.js",
+    "@vue-mf/home": "https://home-erpeden.surge.sh/js/app.js",
     "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
     "@vue-mf/auth": "https://auth-erpeden.surge.sh/js/app.js",
     "@vue-mf/rate-dogs": "https://v3.order.edenfarm.surge.sh/js/app.js",
@@ -12,6 +13,7 @@
     "@vue-mf/root-config/": "https://mfe-erpeden.surge.sh/",
     "@vue-mf/navbar/": "https://navbar-erpeden.surge.sh/js/",
     "@vue-mf/order/": "https://order-erpeden.surge.sh/js/",
+    "@vue-mf/home/": "https://home-erpeden.surge.sh/js/",
     "@vue-mf/auth/": "https://auth-erpeden.surge.sh/js/",
     "@vue-mf/global/": "https://global-erpeden.surge.sh/",
     "@vue-mf/rate-dogs/": "https://v3.order.edenfarm.surge.sh/js/"
