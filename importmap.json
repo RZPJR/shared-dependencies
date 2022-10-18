@@ -1,17 +1,19 @@
 {
   "imports": {
-    "@vue-mf/root-config": "https://v3.edenfarm.surge.sh/vue-mf-root-config.js",
+    "@vue-mf/root-config": "https://mfe-erpeden.surge.sh//vue-mf-root-config.js",
     "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.1/lib/system/single-spa.min.js",
-    "@vue-mf/styleguide": "https://v3.global.edenfarm.surge.sh/vue-mf-styleguide.js",
-    "@vue-mf/navbar": "https://v3.navbar.edenfarm.surge.sh/js/app.js",
+    "@vue-mf/global": "https://global-erpeden.surge.sh/vue-mf-global.js",
+    "@vue-mf/navbar": "https://navbar-erpeden.surge.sh/js/app.js",
+    "@vue-mf/order": "https://order-erpeden.surge.sh/js/app.js",
     "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
-    "@vue-mf/auth": "https://v3.auth.edenfarm.surge.sh/js/app.js",
-    "@vue-mf/order": "https://v3.order.edenfarm.surge.sh/js/app.js",
+    "@vue-mf/auth": "https://auth-erpeden.surge.sh/js/app.js",
+    "@vue-mf/rate-dogs": "https://v3.order.edenfarm.surge.sh/js/app.js",
     "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.6/dist/vue-router.min.js",
-    "@vue-mf/root-config/": "https://v3.edenfarm.surge.sh/",
-    "@vue-mf/navbar/": "https://v3.navbar.edenfarm.surge.sh/js/",
-    "@vue-mf/auth/": "https://v3.auth.edenfarm.surge.sh/js/",
-    "@vue-mf/styleguide/": "https://v3.global.edenfarm.surge.sh/",
-    "@vue-mf/order/": "https://v3.order.edenfarm.surge.sh/js/"
+    "@vue-mf/root-config/": "https://mfe-erpeden.surge.sh/",
+    "@vue-mf/navbar/": "https://navbar-erpeden.surge.sh/js/",
+    "@vue-mf/order/": "https://order-erpeden.surge.sh/js/",
+    "@vue-mf/auth/": "https://auth-erpeden.surge.sh/js/",
+    "@vue-mf/global/": "https://global-erpeden.surge.sh/",
+    "@vue-mf/rate-dogs/": "https://v3.order.edenfarm.surge.sh/js/"
   }
 }
