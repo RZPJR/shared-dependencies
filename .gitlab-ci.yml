@@ -2,9 +2,6 @@ stages:
   - build
   - deploy
 
-before_script:
-  - cp .env.example .env
-
 Build Image:
   stage: build
   image:
