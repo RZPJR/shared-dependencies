@@ -12,6 +12,8 @@
     "@vue-mf/navbar/": "https://fe-navbar.edenfarm.tech/js/",
     "@vue-mf/home/": "https://fe-home.edenfarm.tech/js/",
     "@vue-mf/auth/": "https://fe-auth.edenfarm.tech/js/",
-    "@vue-mf/global/": "https://global.edenfarm.tech/"
+    "@vue-mf/global/": "https://global.edenfarm.tech/",
+    "@vue-mf/error-handling": "https://error-handling.edenfarm.tech/js/app.js",
+    "@vue-mf/error-handling/": "https://error-handling.edenfarm.tech/"
   }
 }
