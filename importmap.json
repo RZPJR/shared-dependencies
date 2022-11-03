@@ -4,18 +4,14 @@
     "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.1/lib/system/single-spa.min.js",
     "@vue-mf/global": "https://global.edenfarm.tech/vue-mf-global.js",
     "@vue-mf/navbar": "https://fe-navbar.edenfarm.tech/js/app.js",
-    "@vue-mf/order": "https://order-erpeden.surge.sh/js/app.js",
     "@vue-mf/home": "https://fe-home.edenfarm.tech/js/app.js",
     "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
     "@vue-mf/auth": "https://fe-auth.edenfarm.tech/js/app.js",
-    "@vue-mf/rate-dogs": "https://v3.order.edenfarm.surge.sh/js/app.js",
     "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.6/dist/vue-router.min.js",
     "@vue-mf/root-config/": "https://v3-dashboard.edenfarm.tech/",
     "@vue-mf/navbar/": "https://fe-navbar.edenfarm.tech/js/",
-    "@vue-mf/order/": "https://order-erpeden.surge.sh/js/",
     "@vue-mf/home/": "https://fe-home.edenfarm.tech/js/",
     "@vue-mf/auth/": "https://fe-auth.edenfarm.tech/js/",
-    "@vue-mf/global/": "https://global.edenfarm.tech/",
-    "@vue-mf/rate-dogs/": "https://v3.order.edenfarm.surge.sh/js/"
+    "@vue-mf/global/": "https://global.edenfarm.tech/"
   }
 }
