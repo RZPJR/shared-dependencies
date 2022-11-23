@@ -16,6 +16,8 @@
     "@vue-mf/error-handling": "https://error-handling.edenfarm.tech/js/app.js",
     "@vue-mf/error-handling/": "https://error-handling.edenfarm.tech/",
     "@vue-mf/user": "https://user.edenfarm.tech/js/app.js",
-    "@vue-mf/user/": "https://user.edenfarm.tech/"
+    "@vue-mf/user/": "https://user.edenfarm.tech/",
+    "@vue-mf/inventory": "https://inventory.edenfarm.tech/js/app.js",
+    "@vue-mf/inventory/": "https://inventory.edenfarm.tech/"
   }
 }
