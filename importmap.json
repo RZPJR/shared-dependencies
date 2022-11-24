@@ -18,6 +18,8 @@
     "@vue-mf/user": "https://user.edenfarm.tech/js/app.js",
     "@vue-mf/user/": "https://user.edenfarm.tech/",
     "@vue-mf/inventory": "https://inventory.edenfarm.tech/js/app.js",
-    "@vue-mf/inventory/": "https://inventory.edenfarm.tech/"
+    "@vue-mf/inventory/": "https://inventory.edenfarm.tech/",
+    "@vue-mf/configuration": "https://configuration.edenfarm.tech/js/app.js",
+    "@vue-mf/configuration/": "https://configuration.edenfarm.tech/"
   }
 }
