@@ -22,6 +22,8 @@
     "@vue-mf/configuration": "https://configuration.edenfarm.tech/js/app.js",
     "@vue-mf/configuration/": "https://configuration.edenfarm.tech/",
     "@vue-mf/campaign": "https://fe-campaign.edenfarm.tech/js/app.js",
-    "@vue-mf/campaign/": "https://fe-campaign.edenfarm.tech/"
+    "@vue-mf/campaign/": "https://fe-campaign.edenfarm.tech/",
+    "@vue-mf/crm": "https://fe-crm.edenfarm.tech/js/app.js",
+    "@vue-mf/crm/": "https://fe-crm.edenfarm.tech/"
   }
 }
