@@ -26,6 +26,8 @@
     "@vue-mf/crm": "https://fe-crm.edenfarm.tech/js/app.js",
     "@vue-mf/crm/": "https://fe-crm.edenfarm.tech/",
     "@vue-mf/logistic": "https://fe-logistic.edenfarm.tech/js/app.js",
-    "@vue-mf/logistic/": "https://fe-logistic.edenfarm.tech/"
+    "@vue-mf/logistic/": "https://fe-logistic.edenfarm.tech/",
+    "@vue-mf/finance": "https://fe-finance.edenfarm.tech/js/app.js",
+    "@vue-mf/finance/": "https://fe-finance.edenfarm.tech/"
   }
 }
