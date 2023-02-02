@@ -28,6 +28,8 @@
     "@vue-mf/logistic": "https://fe-logistic.edenfarm.tech/js/app.js",
     "@vue-mf/logistic/": "https://fe-logistic.edenfarm.tech/",
     "@vue-mf/finance": "https://fe-finance.edenfarm.tech/js/app.js",
-    "@vue-mf/finance/": "https://fe-finance.edenfarm.tech/"
+    "@vue-mf/finance/": "https://fe-finance.edenfarm.tech/",
+    "@vue-mf/purchasing": "https://fe-purchasing.edenfarm.tech/js/app.js",
+    "@vue-mf/purchasing/": "https://fe-purchasing.edenfarm.tech/"
   }
 }
