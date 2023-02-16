@@ -32,6 +32,8 @@
     "@vue-mf/purchasing": "https://fe-purchasing.edenfarm.tech/js/app.js",
     "@vue-mf/purchasing/": "https://fe-purchasing.edenfarm.tech/",
     "@vue-mf/site": "https://fe-site.edenfarm.tech/js/app.js",
-    "@vue-mf/site/": "https://fe-site.edenfarm.tech/"
+    "@vue-mf/site/": "https://fe-site.edenfarm.tech/",
+    "@vue-mf/promotion": "https://fe-promotion.edenfarm.tech/js/app.js",
+    "@vue-mf/promotion/": "https://fe-promotion.edenfarm.tech/"
   }
 }
