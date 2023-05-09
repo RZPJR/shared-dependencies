@@ -1,0 +1,149 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shared-deps
+  labels:
+    app: shared-deps
+  namespace: shared-deps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shared-deps
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: shared-deps
+    spec:
+      imagePullSecrets:
+      - name: registry
+      containers:
+      - name: shared-deps
+        image: git.edenfarm.id:5050/project-version3/erp-dashboard/shared-dependencies/uat:<VERSION>
+        ports:
+          - name: http-port
+            containerPort: 8080
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: 50Mi
+            cpu: 15m
+          limits:
+            memory: 350Mi
+            cpu: 200m
+        volumeMounts:
+        - name: tz-config
+          mountPath: /etc/localtime
+      volumes:
+        - name: tz-config
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Jakarta
+            type: File
+      tolerations:
+      - key: instance_type
+        value: service
+        effect: NoSchedule
+        operator: Equal
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values:
+                - devops
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - shared-deps
+            topologyKey: kubernetes.io/hostname
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-shared-deps
+  namespace: shared-deps
+  labels:
+    app: shared-deps
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http-port
+  selector:
+    app: shared-deps
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-shared-deps
+  namespace: shared-deps
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: shared-deps
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 75
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 75
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: shared-deps
+  namespace: shared-deps
+spec:
+  dnsNames:
+    - uat-shared-deps.edenfarm.tech
+  secretName: shared-deps-tls
+  issuerRef:
+    name: letsencrypt-cluster-issuer
+    kind: ClusterIssuer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: shared-deps
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  name: shared-deps
+spec:
+  tls:
+  - hosts:
+    - uat-shared-deps.edenfarm.tech
+    secretName: shared-deps-tls
+  rules:
+  - host: uat-shared-deps.edenfarm.tech
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-shared-deps
+            port:
+              number: 80
