@@ -37,52 +37,52 @@ spec:
         app: shared-deps
     spec:
       imagePullSecrets:
-      - name: registry
+        - name: registry
       containers:
-      - name: shared-deps
-        image: git.edenfarm.id:5050/project-version3/erp-dashboard/shared-dependencies/eks-dev:<VERSION>
-        ports:
-        - name: http-port
-          containerPort: 8080
-        imagePullPolicy: Always
-        resources:
-          requests:
-            memory: 50Mi
-            cpu: 15m
-          limits:
-            memory: 150Mi
-            cpu: 100m
-        volumeMounts:
-        - name: tz-config
-          mountPath: /etc/localtime
+        - name: shared-deps
+          image: git.edenfarm.id:5050/project-version3/erp-dashboard/shared-dependencies/dev:<VERSION>
+          ports:
+            - name: http-port
+              containerPort: 8080
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 15m
+            limits:
+              memory: 150Mi
+              cpu: 100m
+          volumeMounts:
+            - name: tz-config
+              mountPath: /etc/localtime
       volumes:
-      - name: tz-config
-        hostPath:
-          path: /usr/share/zoneinfo/Asia/Jakarta
-          type: File
-          # tolerations:
-          # - key: instance_type
-          #   value: service
-          #   effect: NoSchedule
-          #   operator: Equal
-          # affinity:
-          #   nodeAffinity:
-          #     requiredDuringSchedulingIgnoredDuringExecution:
-          #       nodeSelectorTerms:
-          #       - matchExpressions:
-          #         - key: role
-          #           operator: In
-          #           values:
-          #           - devops
-          #   podAntiAffinity:
-          #     requiredDuringSchedulingIgnoredDuringExecution:
-          #     - labelSelector:
-          #         matchExpressions:
-          #         - key: app
-          #           operator: In
-          #           values:
-          #           - shared-deps
-          #       topologyKey: kubernetes.io/hostname
+        - name: tz-config
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Jakarta
+            type: File
+            # tolerations:
+            # - key: instance_type
+            #   value: service
+            #   effect: NoSchedule
+            #   operator: Equal
+            # affinity:
+            #   nodeAffinity:
+            #     requiredDuringSchedulingIgnoredDuringExecution:
+            #       nodeSelectorTerms:
+            #       - matchExpressions:
+            #         - key: role
+            #           operator: In
+            #           values:
+            #           - devops
+            #   podAntiAffinity:
+            #     requiredDuringSchedulingIgnoredDuringExecution:
+            #     - labelSelector:
+            #         matchExpressions:
+            #         - key: app
+            #           operator: In
+            #           values:
+            #           - shared-deps
+            #       topologyKey: kubernetes.io/hostname
 ---
 apiVersion: v1
 kind: Service
@@ -93,10 +93,10 @@ metadata:
     app: shared-deps
 spec:
   ports:
-  - name: http
-    protocol: TCP
-    port: 80
-    targetPort: http-port
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: http-port
   selector:
     app: shared-deps
 ---
@@ -113,18 +113,18 @@ spec:
   minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 75
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 75
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 75
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 75
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -133,7 +133,7 @@ metadata:
   namespace: shared-deps
 spec:
   dnsNames:
-  - shared-deps.edenfarm.tech
+    - shared-deps.edenfarm.tech
   secretName: shared-deps-tls
   issuerRef:
     name: letsencrypt-cluster-issuer
@@ -144,21 +144,22 @@ kind: Ingress
 metadata:
   namespace: shared-deps
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
   name: shared-deps
 spec:
+  ingressClassName: nginx
   tls:
-  - hosts:
-    - shared-deps.edenfarm.tech
-    secretName: shared-deps-tls
+    - hosts:
+        - shared-deps.edenfarm.tech
+      secretName: shared-deps-tls
   rules:
-  - host: shared-deps.edenfarm.tech
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: svc-shared-deps
-            port:
-              number: 80
+    - host: shared-deps.edenfarm.tech
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-shared-deps
+                port:
+                  number: 80
